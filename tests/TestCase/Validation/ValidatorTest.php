@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace Tyrellsys\CakePHPValidator\Test\TestCase\Validation;
 
-use Cake\Core\Configure;
-use Cake\I18n\I18n;
 use Cake\TestSuite\TestCase;
 use Tyrellsys\CakePHPValidator\Validation\Validator;
 
@@ -19,7 +17,7 @@ class ValidatorTest extends TestCase
     protected $locale;
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function setUp(): void
     {
@@ -29,7 +27,7 @@ class ValidatorTest extends TestCase
     }
 
     /**
-     * {@inheritDoc}
+     * @inheritDoc
      */
     public function tearDown(): void
     {
@@ -404,13 +402,13 @@ class ValidatorTest extends TestCase
         $this->assertEquals('notEmptyDateTime', $errors['datetime']['_empty']);
         $this->assertEquals('notEmptyTime', $errors['time']['_empty']);
 
-        /** 'allow*' cannot be an error
+    /** 'allow*' cannot be an error
         $this->assertEquals('allowEmptyString', $errors['string']['_empty']);
         $this->assertEquals('allowEmptyArray', $errors['array']['_empty']);
         $this->assertEquals('allowEmptyFile', $errors['file']['_empty']);
         $this->assertEquals('allowEmptyDate', $errors['date']['_empty']);
         $this->assertEquals('allowEmptyDateTime', $errors['datetime']['_empty']);
         $this->assertEquals('allowEmptyTime', $errors['time']['_empty']);
-        */
+     */
     }
 }
