@@ -354,7 +354,7 @@ class Validator extends CakeValidator
    {
        $message = $message ?? __d('validation', 'containsNonAlphaNumeric');
 
-       return parent::containsNonAlphaNumeric($field, $limit, $message, $when);
+       return parent::notAlphaNumeric($field, $limit, $message, $when);
    }
 
    /**
@@ -660,11 +660,11 @@ class Validator extends CakeValidator
    /**
     * {@inheritDoc}
     */
-   public function isArray(string $field, ?string $message = null, $when = null)
+   public function array(string $field, ?string $message = null, $when = null)
    {
        $message = $message ?? __d('validation', 'isArray');
 
-       return parent::isArray($field, $message, $when);
+       return parent::array($field, $message, $when);
    }
 
    /**
