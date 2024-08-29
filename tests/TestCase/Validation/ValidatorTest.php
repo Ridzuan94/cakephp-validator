@@ -81,7 +81,6 @@ class ValidatorTest extends TestCase
             ->greaterThanOrEqualToField('column', 'secondField')
             ->lessThanField('column', 'secondField')
             ->lessThanOrEqualToField('column', 'secondField')
-            ->containsNonAlphaNumeric('column', 1)
             ->date('column')
             ->dateTime('column')
             ->time('column')
@@ -140,7 +139,6 @@ class ValidatorTest extends TestCase
             'greaterThanOrEqualToField' => 'greaterThanOrEqualToField',
             'lessThanField' => 'lessThanField',
             'lessThanOrEqualToField' => 'lessThanOrEqualToField',
-            'containsNonAlphaNumeric' => 'containsNonAlphaNumeric',
             'date' => 'date',
             'dateTime' => 'dateTime',
             'time' => 'time',
@@ -202,7 +200,6 @@ class ValidatorTest extends TestCase
             'greaterThanOrEqualToField' => 'greaterThanOrEqualToField',
             'lessThanField' => 'lessThanField',
             'lessThanOrEqualToField' => 'lessThanOrEqualToField',
-            'containsNonAlphaNumeric' => 'containsNonAlphaNumeric',
             'date' => 'date',
             'dateTime' => 'dateTime',
             'time' => 'time',
@@ -271,7 +268,6 @@ class ValidatorTest extends TestCase
             ->greaterThanOrEqualToField('column', 'secondField')
             ->lessThanField('column', 'secondField')
             ->lessThanOrEqualToField('column', 'secondField')
-            ->containsNonAlphaNumeric('column', 1)
             //->date('column')
             //->dateTime('column')
             //->time('column')
@@ -330,7 +326,6 @@ class ValidatorTest extends TestCase
             'greaterThanOrEqualToField' => 'greaterThanOrEqualToField',
             'lessThanField' => 'lessThanField',
             'lessThanOrEqualToField' => 'lessThanOrEqualToField',
-            'containsNonAlphaNumeric' => 'containsNonAlphaNumeric',
             'boolean' => 'boolean',
             'decimal' => 'decimal',
             'email' => 'email',

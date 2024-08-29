@@ -350,16 +350,6 @@ class Validator extends CakeValidator
     /**
      * @inheritDoc
      */
-    public function containsNonAlphaNumeric(string $field, int $limit = 1, ?string $message = null, $when = null)
-    {
-        $message = $message ?? __d('validation', 'containsNonAlphaNumeric');
-
-        return parent::notAlphaNumeric($field, $limit, $message, $when);
-    }
-
-    /**
-     * @inheritDoc
-     */
     public function date(string $field, array $formats = ['ymd'], ?string $message = null, $when = null)
     {
         $message = $message ?? __d('validation', 'date');
