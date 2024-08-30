@@ -16,3 +16,4 @@ $root = $findRoot(__FILE__);
 unset($findRoot);
 
 require $root . '/vendor/cakephp/cakephp/tests/bootstrap.php';
+require $root . '/vendor/cakephp/cakephp/src/I18n/functions_global.php';
