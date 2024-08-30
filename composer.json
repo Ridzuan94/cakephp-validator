@@ -28,7 +28,7 @@
         ],
         "test": "phpunit",
         "cs-check": "phpcs --colors -p src/ tests/",
-        "cs-fix": "phpcs --colors -p src/ tests/"
+        "cs-fix": "phpcbf --colors -p src/ tests/"
     },
     "config": {
         "allow-plugins": {
