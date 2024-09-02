@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Tyrellsys\CakePHPValidator\Test\TestCase\Validation;
 
 use Cake\TestSuite\TestCase;
+use Laminas\Diactoros\UploadedFile;
 use Tyrellsys\CakePHPValidator\Validation\Validator;
 
 /**
@@ -13,8 +14,7 @@ use Tyrellsys\CakePHPValidator\Validation\Validator;
  */
 class ValidatorTest extends TestCase
 {
-    protected $Validator;
-    protected $locale;
+    protected Validator $Validator;
 
     /**
      * @inheritDoc
@@ -42,13 +42,13 @@ class ValidatorTest extends TestCase
      * \Cake\Validation\Validator if number of methods changes.
      * Must be reflected in this plugin.
      *
-     * @return
+     * @return void
      */
-    public function testMethodCount()
+    public function testMethodCount(): void
     {
         $method = get_class_methods($this->Validator);
 
-        $this->assertCount(101, $method);
+        $this->assertCount(99, $method);
     }
 
     /**
@@ -56,7 +56,7 @@ class ValidatorTest extends TestCase
      *
      * @return void
      */
-    public function testMessages()
+    public function testMessages(): void
     {
         $this->Validator
             ->requirePresence('column')
@@ -111,7 +111,7 @@ class ValidatorTest extends TestCase
             ->utf8('column')
             ->utf8Extended('column')
             ->integer('column')
-            ->isArray('column')
+            ->array('column')
             ->scalar('column')
             ->hexColor('column')
             ->multipleOptions('column')
@@ -164,13 +164,15 @@ class ValidatorTest extends TestCase
             'latitude' => 'latitude',
             'longitude' => 'longitude',
             'integer' => 'integer',
-            'isArray' => 'isArray',
+            'array' => 'array',
             'hexColor' => 'hexColor',
             'multipleOptions' => 'multipleOptions',
             'hasAtLeast' => 'hasAtLeast 1',
             'hasAtMost' => 'hasAtMost 1',
+            'lessThan' => 'lessThan',
+            'lessThanOrEqual' => 'lessThanOrEqual',
         ];
-        $this->assertCount(47, $errors['column']);
+        $this->assertCount(48, $errors['column']);
         $this->assertEquals($expected, $errors['column']);
 
         /**
@@ -227,12 +229,14 @@ class ValidatorTest extends TestCase
             'latitude' => 'latitude',
             'longitude' => 'longitude',
             'integer' => 'integer',
-            'isArray' => 'isArray',
+            'array' => 'array',
             'hexColor' => 'hexColor',
             'hasAtLeast' => 'hasAtLeast 1',
             'hasAtMost' => 'hasAtMost 1',
+            'lessThan' => 'lessThan',
+            'lessThanOrEqual' => 'lessThanOrEqual',
         ];
-        $this->assertCount(46, $errors['column']);
+        $this->assertCount(47, $errors['column']);
         $this->assertEquals($expected, $errors['column']);
     }
 
@@ -243,7 +247,7 @@ class ValidatorTest extends TestCase
      *
      * @return void
      */
-    public function testNotScalar()
+    public function testNotScalar(): void
     {
         $this->Validator
             ->requirePresence('column')
@@ -298,7 +302,7 @@ class ValidatorTest extends TestCase
             ->utf8('column')
             ->utf8Extended('column')
             ->integer('column')
-            ->isArray('column')
+            ->array('column')
             ->scalar('column')
             ->hexColor('column')
             ->multipleOptions('column')
@@ -317,7 +321,6 @@ class ValidatorTest extends TestCase
             'lessThan' => 'lessThan',
             'lessThanOrEqual' => 'lessThanOrEqual',
             'equals' => 'equals',
-            'notEquals' => 'notEquals',
             'sameAs' => 'sameAs',
             'notSameAs' => 'notSameAs',
             'equalToField' => 'equalToField',
@@ -357,7 +360,7 @@ class ValidatorTest extends TestCase
             'multipleOptions' => 'multipleOptions',
             'hasAtLeast' => 'hasAtLeast 1',
         ];
-        $this->assertCount(50, $errors['column']);
+        $this->assertCount(48, $errors['column']);
         $this->assertEquals($expected, $errors['column']);
     }
 
@@ -366,7 +369,7 @@ class ValidatorTest extends TestCase
      *
      * @return void
      */
-    public function testEmptyXXXX()
+    public function testEmptyXXXX(): void
     {
         // notEmpty
         $this->Validator
@@ -380,12 +383,7 @@ class ValidatorTest extends TestCase
         $errors = $this->Validator->validate([
             'string' => '',
             'array' => [],
-            'file' => [
-                'name' => 'name',
-                'type' => 'type',
-                'tmp_name' => 'tmp_name',
-                'error' => UPLOAD_ERR_NO_FILE,
-            ],
+            'file' => new UploadedFile('', 0, UPLOAD_ERR_NO_FILE, null, null),
             'date' => '',
             'datetime' => '',
             'time' => '',
